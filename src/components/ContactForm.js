@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import Checkbox from './Checkbox'
 
 /*
   ⚠️ This is an example of a contact form powered with Netlify form handling.
@@ -62,6 +63,30 @@ const Form = styled.form`
 const Name = styled.input`
   margin: 0 0 1em 0;
   width: 100%;
+  @media (min-width: ${props => props.theme.responsive.small}) {
+    width: 49%;
+  }
+`
+
+const Age = styled.select`
+  width: 100%;
+  height: 35px;
+  background: white;
+  color: gray;
+  padding-left: 5px;
+  font-size: 14px;
+  border: none;
+  margin: 0 0 1em 0;
+
+  option {
+    color: black;
+    background: white;
+    display: flex;
+    white-space: pre;
+    min-height: 20px;
+    padding: 0px 2px 1px;
+  }
+
   @media (min-width: ${props => props.theme.responsive.small}) {
     width: 49%;
   }
@@ -154,6 +179,8 @@ class ContactForm extends React.Component {
     this.state = {
       name: '',
       email: '',
+      age: '',
+      likeCats: false,
       message: '',
       showModal: false,
     }
@@ -166,6 +193,10 @@ class ContactForm extends React.Component {
     this.setState({
       [name]: value,
     })
+  }
+
+  handleCheckboxChange = event => {
+    this.setState({ likeCats: event.target.checked })
   }
 
   handleSubmit = event => {
@@ -183,6 +214,8 @@ class ContactForm extends React.Component {
     this.setState({
       name: '',
       email: '',
+      age: '',
+      likeCats: false,
       message: '',
       showModal: true,
     })
@@ -226,6 +259,28 @@ class ContactForm extends React.Component {
           onChange={this.handleInputChange}
           required
         />
+        <label style={{height: '35px', alignSelf: 'center'}}>
+          <Checkbox
+            name="likeCats"
+            checked={this.state.likeCats}
+            onChange={this.handleCheckboxChange}
+          />
+          <span style={{ margin: '10px 1em' }}>I also like cats</span>
+        </label>
+        <Age
+          name="age"
+          placeholder="Age"
+          value={this.state.age}
+          onChange={this.handleInputChange}
+          required>
+            <option value="">
+              None
+            </option>
+            <option value={10}>Ten</option>
+            <option value={20}>Twenty</option>
+            <option value={30}>Thirty</option>
+        </Age>
+
         <Message
           name="message"
           type="text"

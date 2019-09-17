@@ -163,5 +163,12 @@ module.exports = {
       },
     },
     'gatsby-plugin-netlify',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://aec-demo.taradevko.com',
+        policy: [{ userAgent: '*', disallow: '/' }]
+      }
+    }
   ],
 }
