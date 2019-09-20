@@ -7,6 +7,7 @@ import Helmet from 'react-helmet'
 import Container from '../components/Container'
 import Pagination from '../components/Pagination'
 import SEO from '../components/SEO'
+import DataLayer from '../components/DataLayer'
 import config from '../utils/siteConfig'
 
 const Index = ({ data, pageContext }) => {
@@ -18,6 +19,7 @@ const Index = ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO />
+      <DataLayer pageTitle={`Page: ${config.siteTitle} - Page ${currentPage}`} pagePath={'/'}/>
       {!isFirstPage && (
         <Helmet>
           <title>{`${config.siteTitle} - Page ${currentPage}`}</title>

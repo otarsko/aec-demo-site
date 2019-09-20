@@ -10,6 +10,7 @@ import TagList from '../components/TagList'
 import PostLinks from '../components/PostLinks'
 import PostDetails from '../components/PostDetails'
 import SEO from '../components/SEO'
+import DataLayer from '../components/DataLayer'
 
 const PostTemplate = ({ data, pageContext }) => {
   const {
@@ -31,6 +32,7 @@ const PostTemplate = ({ data, pageContext }) => {
         <title>{`${title} - ${config.siteTitle}`}</title>
       </Helmet>
       <SEO pagePath={slug} postNode={postNode} postSEO />
+      <DataLayer pageTitle={`Post: ${title}`} pagePath={slug}/>
 
       <Hero title={title} image={heroImage} height={'50vh'} />
 

@@ -10,6 +10,7 @@ import CardList from '../components/CardList'
 import PageTitle from '../components/PageTitle'
 import Pagination from '../components/Pagination'
 import Container from '../components/Container'
+import DataLayer from '../components/DataLayer'
 
 const TagTemplate = ({ data, pageContext }) => {
   const posts = orderBy(
@@ -47,6 +48,7 @@ const TagTemplate = ({ data, pageContext }) => {
           <meta property="og:url" content={`${config.siteUrl}/tag/${slug}/`} />
         </Helmet>
       )}
+      <DataLayer pageTitle={`Tag: ${title} - Page ${currentPage}`} pagePath={slug}/>
 
       <Container>
         <PageTitle small>

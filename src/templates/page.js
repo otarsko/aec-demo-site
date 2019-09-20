@@ -7,6 +7,7 @@ import Container from '../components/Container'
 import PageTitle from '../components/PageTitle'
 import PageBody from '../components/PageBody'
 import SEO from '../components/SEO'
+import DataLayer from '../components/DataLayer'
 
 const PageTemplate = ({ data }) => {
   const { title, slug, body } = data.contentfulPage
@@ -18,6 +19,7 @@ const PageTemplate = ({ data }) => {
         <title>{`${title} - ${config.siteTitle}`}</title>
       </Helmet>
       <SEO pagePath={slug} postNode={postNode} pageSEO />
+      <DataLayer pageTitle={`Page: ${title}`} pagePath={slug}/>
 
       <Container>
         <PageTitle>{title}</PageTitle>
