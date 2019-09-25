@@ -162,13 +162,27 @@ module.exports = {
         color: config.themeColor,
       },
     },
-    'gatsby-plugin-netlify',
+    {
+      resolve: 'gatsby-plugin-netlify',
+      options: {
+        headers: {
+          '/*': [
+            "Content-Security-Policy: frame-ancestors 'self' https://*.adobe.com/",
+            "Referrer-Policy:	same-origin",
+            "Strict-Transport-Security:	max-age=31536000",
+            "X-Content-Type-Options:	nosniff",
+            "X-Xss-Protection	1: mode=block"
+          ]
+        },
+        mergeSecurityHeaders: false
+      }
+    },
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: 'https://aec-demo.taradevko.com',
-        policy: [{ userAgent: '*', disallow: '/' }]
+        policy: [{ userAgent: '*', disallow: '/' }],
       }
-    }
+    },
   ],
 }
