@@ -19,7 +19,7 @@ const Contact = ({ data }) => {
         <title>{`Contact - ${config.siteTitle}`}</title>
       </Helmet>
       <SEO postNode={postNode} pagePath="contact" customTitle />
-      <DataLayer pageTitle={`Contact`} pagePath={slug}/>
+      <DataLayer pageTitle="Contact" pagePath="contact"/>
 
       <Container>
         <PageTitle>Contact</PageTitle>
