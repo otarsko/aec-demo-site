@@ -200,14 +200,8 @@ class ContactForm extends React.Component {
   }
 
   handleSubmit = event => {
-    fetch('/?no-cache=1', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', ...this.state }),
-    })
-      .then(this.handleSuccess)
-      .catch(error => alert(error))
-    event.preventDefault()
+    localStorage.setItem("age", this.state.age);
+    localStorage.setItem("likeCats", this.state.likeCats);
   }
 
   handleSuccess = () => {
@@ -230,8 +224,6 @@ class ContactForm extends React.Component {
       <Form
         name="contact"
         onSubmit={this.handleSubmit}
-        data-netlify="true"
-        data-netlify-honeypot="bot"
         overlay={this.state.showModal}
         onClick={this.closeModal}
       >

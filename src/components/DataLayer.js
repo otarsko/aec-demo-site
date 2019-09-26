@@ -17,13 +17,18 @@ export default class DataLayer extends React.Component {
     const { pageTitle, pageType, pagePath } = this.props;
 
     {
-      console.log("componentDidMount", this.props)
       window.digitalData = {
         page: {
           pageInfo: {
             pageName: pageTitle,
             pageType: pageType,
             pagePath: pagePath
+          }
+        },
+        user: {
+          userInfo: {
+            age: localStorage.getItem('age') || '',
+            likeCats: localStorage.getItem('likeCats') || "false"
           }
         }
       }
