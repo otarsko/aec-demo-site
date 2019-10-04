@@ -71,7 +71,7 @@ const Card = ({
   ...props
 }) => {
   return (
-    <Post featured={props.featured}>
+    <Post featured={props.featured} id={props.featured ? 'featured-post' : null}>
       <Link to={`/${slug}/`}>
         <Img fluid={heroImage.fluid} backgroundColor={'#eeeeee'} />
         <Title>{title}</Title>
