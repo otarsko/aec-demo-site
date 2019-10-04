@@ -17,6 +17,8 @@ export default function HTML(props) {
           //${JSON.stringify(props)}
         `}} />
         <script src="//assets.adobedtm.com/c17df19a6a20/53da9a51bf3e/launch-d1d82fdfa8fe-development.min.js" async></script>
+        <script src="/target/at.js"></script>
+
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
