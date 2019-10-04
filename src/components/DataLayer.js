@@ -27,8 +27,8 @@ export default class DataLayer extends React.Component {
         },
         user: {
           userInfo: {
-            age: localStorage.getItem('age') || '',
-            likeCats: localStorage.getItem('likeCats') || "false"
+            age: localStorage.getItem('age'),
+            likeCats: localStorage.getItem('likeCats')
           }
         }
       }

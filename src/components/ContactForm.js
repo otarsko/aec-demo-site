@@ -202,6 +202,10 @@ class ContactForm extends React.Component {
   handleSubmit = event => {
     localStorage.setItem("age", this.state.age);
     localStorage.setItem("likeCats", this.state.likeCats);
+
+    var event = new CustomEvent('contact-form-submit');
+    var obj = document.querySelector("body");
+    obj.dispatchEvent(event);
   }
 
   handleSuccess = () => {
