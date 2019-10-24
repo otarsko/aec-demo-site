@@ -1,6 +1,4 @@
 import React from 'react';
-import Helmet from 'react-helmet'
-import { useStaticQuery, graphql } from "gatsby"
 
 export default class DataLayer extends React.Component {
   constructor(props) {
@@ -23,12 +21,6 @@ export default class DataLayer extends React.Component {
             pageName: pageTitle,
             pageType: pageType,
             pagePath: pagePath
-          }
-        },
-        user: {
-          userInfo: {
-            age: localStorage.getItem('age'),
-            likeCats: localStorage.getItem('likeCats')
           }
         }
       }

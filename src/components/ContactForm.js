@@ -94,33 +94,6 @@ const Submit = styled.input`
   }
 `
 
-const Modal = styled.div`
-  background: white;
-  padding: 2em;
-  border-radius: 2px;
-  position: fixed;
-  min-width: 75%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-  z-index: 99;
-  display: flex;
-  flex-flow: column;
-  align-items: flex-start;
-  transition: 0.2s all;
-  opacity: ${props => (props.visible ? '1' : '0')};
-  visibility: ${props => (props.visible ? 'visible' : 'hidden')};
-  @media screen and (min-width: ${props => props.theme.responsive.small}) {
-    min-width: inherit;
-    max-width: 400px;
-  }
-  p {
-    line-height: 1.6;
-    margin: 0 0 2em 0;
-  }
-`
-
 const Button = styled.div`
   background: ${props => props.theme.colors.base};
   font-size: 1em;
@@ -155,10 +128,8 @@ class ContactForm extends React.Component {
     this.state = {
       name: '',
       email: '',
-      age: '',
       likeCats: false,
       message: '',
-      showModal: false,
     }
   }
 
@@ -175,28 +146,21 @@ class ContactForm extends React.Component {
     this.setState({ likeCats: event.target.checked })
   }
 
-  handleSubmit = event => {
-    localStorage.setItem("age", this.state.age);
+  handleSubmit = submitEvent => {
     localStorage.setItem("likeCats", this.state.likeCats);
 
     var event = new CustomEvent('contact-form-submit');
     var obj = document.querySelector("body");
     obj.dispatchEvent(event);
-  }
 
-  handleSuccess = () => {
     this.setState({
       name: '',
       email: '',
-      age: '',
       likeCats: false,
       message: '',
-      showModal: true,
     })
-  }
 
-  closeModal = () => {
-    this.setState({ showModal: false })
+    submitEvent.preventDefault();
   }
 
   render() {
@@ -204,8 +168,6 @@ class ContactForm extends React.Component {
       <Form
         name="contact"
         onSubmit={this.handleSubmit}
-        overlay={this.state.showModal}
-        onClick={this.closeModal}
       >
         <input type="hidden" name="form-name" value="contact" />
         <p hidden>
@@ -249,14 +211,6 @@ class ContactForm extends React.Component {
           required
         />
         <Submit name="submit" type="submit" value="Send" />
-
-        <Modal visible={this.state.showModal}>
-          <p>
-            Thank you for reaching out. I will get back to you as soon as
-            possible.
-          </p>
-          <Button onClick={this.closeModal}>Okay</Button>
-        </Modal>
       </Form>
     )
   }
